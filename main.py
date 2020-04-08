@@ -10,8 +10,8 @@ from urllib.request import urlopen
 from bs4 import BeautifulSoup
 from collections import namedtuple
 
-Website = namedtuple('Website', ['url', 'time_tag', 'weather_tag', 'temp_low_tag', 'temp_high_tag'])  
-WeatherData = namedtuple('WeatherData', ['time', 'weather', 'temp_low', 'temp_high'])
+Website = namedtuple('Website', ['url', 'time_tag', 'weather_tag', 'temp_low_tag', 'temp_high_tag', 'wind_strength_tag'])  
+WeatherData = namedtuple('WeatherData', ['time', 'weather', 'temp_low', 'temp_high', 'wind_strength'])
 
 class Weather:
     '''
@@ -21,7 +21,7 @@ class Weather:
         self.data = WeatherData(*data)
         
     def __repr__(self):
-        return 'time: {}\nweather: {}\ntemp_low: {}\ntemp_high: {}\nwind_direct: {}\nwind_strength: {}'.format(*self.data, '--', '--')      
+        return 'time: {}\nweather: {}\ntemp_low: {}\ntemp_high: {}\nwind_strength: {}'.format(*self.data)      
         
 class Crawler:
     
@@ -52,21 +52,22 @@ class Crawler:
             weas = self.safeGet(bs, website.weather_tag)
             temp_lows = self.safeGet(bs, website.temp_low_tag)
             temp_highs = self.safeGet(bs, website.temp_high_tag)
+            wind_strengthes = self.safeGet(bs, website.wind_strength_tag)
             temp_highs.insert(0, '--')
             
-            for time, wea, temp_low, temp_high in zip(times, weas, temp_lows, temp_highs):
-                weather = Weather(time, wea, temp_low, temp_high)
+            for time, wea, temp_low, temp_high, wind_strength in zip(times, weas, temp_lows, temp_highs, wind_strengthes):
+                weather = Weather(time, wea, temp_low, temp_high, wind_strength)
                 weathers.append(weather)
                 
         return weathers
                 
 
 crawler = Crawler()
-website_data = ('http://www.weather.com.cn/weather/101010100.shtml', '.t.clearfix li h1', '.t.clearfix li .wea', '.t.clearfix li .tem i', '.t.clearfix li .tem span')
+website_data = ('http://www.weather.com.cn/weather/101010100.shtml', '.t.clearfix li h1', '.t.clearfix li .wea', '.t.clearfix li .tem i', '.t.clearfix li .tem span', '.t.clearfix li p.win i')
 website = Website(*website_data)
 weathers = crawler.crawl(website)
 
 for each in weathers:
     print('-' * 20)
     print(each)
-      
+    
