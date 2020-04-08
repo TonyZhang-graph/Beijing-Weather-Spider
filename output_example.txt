@@ -1,50 +1,42 @@
-
 --------------------
 time: 8日（今天）
 weather: 小雨
 temp_low: 7℃
 temp_high: --
-wind_direct: --
-wind_strength: --
+wind_strength: <3级
 --------------------
 time: 9日（明天）
 weather: 小雨转多云
 temp_low: 3℃
 temp_high: 11℃
-wind_direct: --
-wind_strength: --
+wind_strength: <3级
 --------------------
 time: 10日（后天）
 weather: 多云
 temp_low: 5℃
 temp_high: 17℃
-wind_direct: --
-wind_strength: --
+wind_strength: <3级
 --------------------
 time: 11日（周六）
 weather: 晴
 temp_low: 8℃
 temp_high: 21℃
-wind_direct: --
-wind_strength: --
+wind_strength: <3级
 --------------------
 time: 12日（周日）
 weather: 晴
 temp_low: 10℃
 temp_high: 23℃
-wind_direct: --
-wind_strength: --
+wind_strength: <3级
 --------------------
 time: 13日（周一）
 weather: 晴
 temp_low: 8℃
 temp_high: 25℃
-wind_direct: --
-wind_strength: --
+wind_strength: <3级
 --------------------
 time: 14日（周二）
 weather: 晴转多云
 temp_low: 9℃
 temp_high: 26℃
-wind_direct: --
-wind_strength: --
+wind_strength: <3级
